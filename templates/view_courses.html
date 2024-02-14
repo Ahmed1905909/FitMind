@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Course</title>
+    <link rel="stylesheet" href="{% static 'css/view_course.css' %}">
+</head>
+<body>
+    <div class="course-card">
+        <h2><a href="{% url 'courses:view_course' course.id %}">{{ course.title }}</a></h2>
+        <p>{{ course.description }}</p>
+    </div>
+    <!-- Display course content -->
+    <!-- ... -->
+</body>
+</html>

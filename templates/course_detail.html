@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ course.title }}</h1>
+<p>{{ course.description }}</p>
+<p>Price: ${{ course.price }}</p>
+<form action="{% url 'create_payment_intent' %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="course_id" value="{{ course.id }}">
+    <button type="submit">Buy Now</button>
+</form>
+{% endblock %}

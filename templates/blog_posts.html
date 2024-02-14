@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        {% for post in page_obj %}
+            <div class="col-md-6 blog_col">
+                <div class="blog_post">
+                    <div class="blog_post_title"><a href="#">{{ post.title }}</a></div>
+                    <div class="blog_post_image"><img src="{{ post.image.url }}" alt="{{ post.title }}"></div>
+                    <div class="blog_post_date">{{ post.date }}</div>
+                    <div class="blog_post_text">
+                        <p>{{ post.content }}</p>
+                    </div>
+                    <div class="blog_post_link"><a href="#">Read More</a></div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:2 and not forloop.last %}
+                </div><div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>

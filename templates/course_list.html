@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Available Courses</h2>
+<div class="courses">
+    {% for course in courses %}
+    <div class="course">
+        <h3>{{ course.course_name }}</h3>
+        <p>{{ course.course_description }}</p>
+        <p><strong>Price:</strong> ${{ course.course_price }}</p>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Buy</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+<h2>Course Bundles</h2>
+<div class="bundles">
+    {% for bundle in bundles %}
+    <div class="bundle">
+        <h3>{{ bundle.name }}</h3>
+        <p><strong>Price:</strong> ${{ bundle.bundle_price }}</p>
+        <p>Courses in this bundle:</p>
+        <ul>
+            {% for course in bundle.courses.all %}
+            <li>{{ course.course_name }}</li>
+            {% endfor %}
+        </ul>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Buy Bundle</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

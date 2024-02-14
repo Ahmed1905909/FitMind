@@ -1,0 +1,9 @@
+{% if is_staff %}
+  <form method="post">
+    {% csrf_token %}
+    <textarea name="content">{{ content }}</textarea>
+    <button type="submit">Save</button>
+  </form>
+{% else %}
+  <div>{{ content }}</div>
+{% endif %}

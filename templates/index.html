@@ -1,0 +1,55 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% load static %}
+
+{% block content %}
+<div class="home">
+    <div class="background_image" style="background-image:url({% static 'media/black.png' %});"></div>
+    <div class="overlay"></div>
+    <div class="home_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content text-center">
+                        
+                        </div>
+                        <div class="home_title">Get fit with us</div>
+                        <div class="home_subtitle">Pilates, Yoga, Fitness, Spinning & many more</div>
+                        <div class="button home_button ml-auto mr-auto"><a href="#">Join Now</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Boxes -->
+
+<div class="boxes">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="boxes_container d-flex flex-lg-row flex-column align-items-start justify-content-start">
+                    
+                                   <!-- Box -->
+                                   {% for course in courses %}
+                                   <div class="box">
+                                       <div class="box_title">{{ course.course_name }}</div>
+                                       <div class="box_text">
+                                           <p>{{ course.course_description }}</p>
+                                       </div>
+                                       <div class="box_link_container">
+                                           <a href="#"><div class="box_link d-flex flex-column align-items-center justify-content-center trans_200"><div>+</div></div></a>
+                                       </div>
+                                   </div>
+                                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

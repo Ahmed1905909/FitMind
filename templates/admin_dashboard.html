@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Last Login</th>
+                <th>Staff Member</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.last_login }}</td>
+                <td>{{ user.is_staff }}</td>
+                <td>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_id" value="{{ user.id }}">
+                        <input type="submit" name="edit_user" value="Edit">
+                        <input type="submit" name="delete_user" value="Delete">
+                        <input type="submit" name="toggle_staff" value="Toggle Staff Status">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Edit User</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ edit_form.as_p }}
+        <input type="submit" name="edit_user" value="Edit User">
+    </form>
+</body>
+</html>
+{% endblock %}
