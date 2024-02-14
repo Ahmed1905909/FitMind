@@ -13,8 +13,9 @@ import os
 
 # Create your views here.
 def index(request):
-    courses = Course.objects.all()[:3]  # Fetch all courses from the database
-    context = {'username': request.user.username, 'courses': courses}
+    courses = Course.objects.all()[:3] 
+    blogs = BlogPost.objects.all()[:3]
+    context = {'username': request.user.username, 'courses': courses , 'blogs':blogs }
     return render(request, 'index.html', context)
 
 # views.py

@@ -1,9 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+
+
+{% load static %}
 {% if is_staff %}
-  <form method="post">
-    {% csrf_token %}
-    <textarea name="content">{{ content }}</textarea>
-    <button type="submit">Save</button>
-  </form>
+<form method="post">
+  {% csrf_token %}
+  <textarea name="content">{{ content }}</textarea>
+  <button type="submit">Save</button>
+</form>
 {% else %}
-  <div>{{ content }}</div>
+<div class="about">
+  <div class="container about_container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="about_content">
+          <div class="section_title_container">
+            <div class="section_subtitle">welcome to FitMind</div>
+            <div class="section_title">About <span>FitMind</span></div>
+          </div>
+          <div class="text_highlight">test</div>
+          <div class="about_text">
+            <p>{{ content }}</p>
+          </div>
+          <div class="button about_button"><a href="#">Join Now</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about_background">
+    <div class="about_image"><img src="images/a2.png" alt=""></div>
+  </div>
+</div>
 {% endif %}

@@ -52,4 +52,39 @@
         </div>
     </div>
 </div>
+
+<div class="blog">
+    <div class="blog_overlay"></div>
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/blog.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class=" d-flex flex-row align-items-start justify-content-start">
+                    <div class="section_title_container">
+                        <div class="section_subtitle">welcome to FitMind</div>
+                        <div class="section_title">The Blog</div>
+                    </div>
+                    <div class="all_posts_link ml-auto"><a href="#">View all blog posts</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="row blog_row">
+            
+            <!-- Blog Post -->
+            {% for post in blogs %}
+            <div class="col-lg-4 blog_col">
+                <div class="blog_post">
+                    <div class="blog_post_image"><img src="{{ post.image.url }}" alt=""></div>
+                    <div class="blog_post_title"><a href="#">{{ post.title }}</a></div>
+                    <div class="blog_post_date"><a href="#">{{ post.date }}</a></div>
+                    <div class="blog_post_text">
+                        <p>{{ post.content }}</p>
+                    </div>
+                    <div class="blog_post_link"><a href="#">Read More</a></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
